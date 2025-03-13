@@ -16,6 +16,9 @@ from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
 from xgboost import XGBClassifier
 
+from src.visualizations import visualize_model_performance
+from src.statistical_analysis import analyze_no_treatment_group
+
 
 def model_metrics(model, kfold, X_train, X_test, y_train, y_test):
     """Calculate and print model performance metrics"""
@@ -233,5 +236,3 @@ def run_clinical_analysis(clinical_df, df):
         'no_treatment_stats': no_treatment_stats
     }
 
-clinical_df = df.copy
-results = run_clinical_analysis(clinical_df, original_df)

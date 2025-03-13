@@ -3,6 +3,11 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import roc_curve, auc
+from matplotlib_venn import venn3   
+import pandas as pd 
+
 
 def plot_clinical_distributions(clinical_df, figsize=(15, 10)):
     columns = ['age_at_diagnosis', 'lymph_nodes_examined_positive', 

@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+
+
 def adjust_plot_margins():
     """Fix matplotlib bug that cuts off top/bottom of seaborn visualizations"""
     b, t = plt.ylim()

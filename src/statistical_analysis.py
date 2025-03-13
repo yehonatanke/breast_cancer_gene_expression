@@ -1,6 +1,9 @@
 # Statistical Analysis Functions
 
 
+import numpy as np
+
+
 def calculate_treatment_stats(clinical_df):
     """Calculate statistics for treatment groups"""
     df_subsets = create_treatment_subsets(clinical_df)

@@ -1,5 +1,7 @@
 # Data Preprocessing Functions
 
+import pandas as pd
+
 
 def preprocess_genetic_data(df):
     """Process genetic data by dropping unnecessary features"""
