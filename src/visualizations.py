@@ -175,3 +175,54 @@ def plot_gene_expression_heatmap(genetic_df):
     plt.title('Gene Expression Heatmap')
     adjust_plot_margins()
     plt.show()
+
+
+# Visualization Function for Models
+def visualize_model_performance(results, y_test, color='Blues', title="Accuracy scores for basic models", 
+                              inds=None):
+    """Visualize model performance with accuracy bars and ROC curves"""
+    if inds is None:
+        inds = range(1, len(results) + 1)
+    
+    fig, (ax1, ax2) = plt.subplots(ncols=2, nrows=1, figsize=(15,6))
+    fig.suptitle(title, fontsize=16)
+    
+    labels = list(results.keys())
+    cv_scores = [results[name]['cv_score'] for name in labels]
+    test_scores = [results[name]['test_score'] for name in labels]
+    preds = [results[name]['pred'] for name in labels]
+    
+    # Accuracy bars
+    ax1.bar(inds, cv_scores, color=sns.color_palette(color)[5], alpha=0.3, 
+            hatch="x", edgecolor="none", label="CrossValidation Set")
+    ax1.bar(inds, test_scores, color=sns.color_palette(color)[0], label="Testing set")
+    ax1.set_ylim(0.4, 1)
+    ax1.set_ylabel("Accuracy score")
+    ax1.axhline(0.5793, color="black", linestyle="--")
+    ax1.set_title("Accuracy scores", fontsize=17)
+    ax1.set_xticks(inds)
+    ax1.set_xticklabels(labels, size=12, rotation=40, ha="right")
+    ax1.legend()
+
+    # ROC curves
+    if isinstance(y_test, list):
+        for label, pred, yt in zip(labels, preds, y_test):
+            fpr, tpr, _ = roc_curve(yt.values, pred)
+            roc_auc = auc(fpr, tpr)
+            ax2.plot(fpr, tpr, label=f'{label} (area = {roc_auc:.2f})', linewidth=2)
+    else:
+        for label, pred in zip(labels, preds):
+            fpr, tpr, _ = roc_curve(y_test.values, pred)
+            roc_auc = auc(fpr, tpr)
+            ax2.plot(fpr, tpr, label=f'{label} (area = {roc_auc:.2f})', linewidth=2)
+    
+    ax2.plot([0, 1], [0, 1], 'k--', linewidth=2)
+    ax2.set_xlim([-0.05, 1.0])
+    ax2.set_ylim([-0.05, 1.05])
+    ax2.set_xlabel('False Positive Rate')
+    ax2.set_ylabel('True Positive Rate')
+    ax2.legend(loc="lower right", prop={'size': 12})
+    ax2.set_title("ROC curve", fontsize=17)
+    
+    plt.show()
+
