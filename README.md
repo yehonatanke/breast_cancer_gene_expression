@@ -1,7 +1,7 @@
 # Breast Cancer Gene Expression Analysis Toolkit
 
 ## Overview
-This repository contains a comprehensive toolkit for analyzing breast cancer gene expression data, focusing on the relationship between clinical features, genetic markers, and patient outcomes. The toolkit provides functionality for data preprocessing, statistical analysis, machine learning modeling, and visualization of breast cancer datasets.
+This repository contains a toolkit for analyzing breast cancer gene expression data, focusing on the relationship between clinical features, genetic markers, and patient outcomes. The toolkit provides functionality for data preprocessing, statistical analysis, machine learning modeling, and visualization of breast cancer datasets.
 
 ## Repository Structure
 
