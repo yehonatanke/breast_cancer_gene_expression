@@ -35,7 +35,7 @@ A toolkit for analyzing breast cancer gene expression data, focusing on the rela
 ![Clinical Features by Survival Status](output/clinical_features_by_survival_status.png)
 *Comparison of key clinical features between surviving and deceased patients*
 
-## Key Features
+## Features
 - Integration with Kaggle datasets for breast cancer research
 - Comprehensive preprocessing pipeline for clinical and genetic data
 - Statistical analysis of treatment effectiveness and survival outcomes
